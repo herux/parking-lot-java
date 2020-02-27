@@ -2,10 +2,9 @@ package main.java.com.herux;
 
 import java.io.BufferedReader;
 import java.io.Console;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import main.java.com.core.*;
 
 public class ParkingLotRunner {
 
@@ -18,6 +17,7 @@ public class ParkingLotRunner {
         } 
 
         String command = "";
+        Corepl corepl = new Corepl();
         if (args.length > 0) {
             String filename = args[0];
             BufferedReader reader;
@@ -25,7 +25,8 @@ public class ParkingLotRunner {
                 reader = new BufferedReader(new FileReader(filename));
                 command = reader.readLine();
                 while (command != null) {
-                    console.printf("command: %s\n", command);
+                    String response = corepl.responseCommand(command);
+                    console.printf("command: %s\n", response);
                     command = reader.readLine();
                 }
                 reader.close();
@@ -43,7 +44,7 @@ public class ParkingLotRunner {
                     break;
                 }
                 
-                String response = "";//responseCommand(command);
+                String response = corepl.responseCommand(command);
                 console.printf(response + "\n");
             }
         }
