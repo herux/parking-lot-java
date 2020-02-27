@@ -16,18 +16,18 @@ public class ParkingLotRunner {
             return; 
         } 
 
-        String command = "";
-        Corepl corepl = new Corepl();
+        String cmdArgs = "";
+        CoreParkingLot corepl = new CoreParkingLot();
         if (args.length > 0) {
             String filename = args[0];
             BufferedReader reader;
             try {
                 reader = new BufferedReader(new FileReader(filename));
-                command = reader.readLine();
-                while (command != null) {
-                    String response = corepl.responseCommand(command);
+                cmdArgs = reader.readLine();
+                while (cmdArgs != null) {
+                    String response = corepl.responseCommand(cmdArgs);
                     console.printf("command: %s\n", response);
-                    command = reader.readLine();
+                    cmdArgs = reader.readLine();
                 }
                 reader.close();
             } catch (IOException e) {
@@ -39,12 +39,12 @@ public class ParkingLotRunner {
             console.printf("Author: heruxi@gmail.com \n");
             console.printf("------------------------  \n");
             while (true) {
-                command = console.readLine("ParkingLot# ");
-                if (command.equals("exit")) {
+                cmdArgs = console.readLine("ParkingLot# ");
+                if (cmdArgs.equals("exit")) {
                     break;
                 }
                 
-                String response = corepl.responseCommand(command);
+                String response = corepl.responseCommand(cmdArgs);
                 console.printf(response + "\n");
             }
         }
