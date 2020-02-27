@@ -18,6 +18,10 @@ public class ParkingLotRunner {
 
         String cmdArgs = "";
         CoreParkingLot corepl = new CoreParkingLot();
+        console.printf("=======================  \n");
+        console.printf("PARKING LOT \n");
+        console.printf("Author: heruxi@gmail.com \n");
+        console.printf("------------------------  \n");
         if (args.length > 0) {
             String filename = args[0];
             BufferedReader reader;
@@ -26,7 +30,7 @@ public class ParkingLotRunner {
                 cmdArgs = reader.readLine();
                 while (cmdArgs != null) {
                     String response = corepl.responseCommand(cmdArgs);
-                    console.printf("command: %s\n", response);
+                    console.printf(response + "\n");
                     cmdArgs = reader.readLine();
                 }
                 reader.close();
@@ -34,10 +38,6 @@ public class ParkingLotRunner {
                 console.printf("%s file not found.", filename);
             } 
         } else {
-            console.printf("=======================  \n");
-            console.printf("PARKING LOT \n");
-            console.printf("Author: heruxi@gmail.com \n");
-            console.printf("------------------------  \n");
             while (true) {
                 cmdArgs = console.readLine("ParkingLot# ");
                 if (cmdArgs.equals("exit")) {

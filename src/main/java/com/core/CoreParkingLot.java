@@ -43,16 +43,16 @@ public class CoreParkingLot {
                     result = park(plateNumber, color);
                     break;
                 case REGISTRATION_NUMBERS_FOR_CARS_WITH_COLOUR:
-                    result = registrationNumbersforCarswithColour();
+                    result = registrationNumbersforCarswithColour(argsArr[1]);
                     break;
                 case STATUS:
                     result = status();
                     break;
                 case SLOT_NUMBERS_FOR_CARS_WITH_COLOUR:
-                    result = slotNumbersforCarswithColour();
+                    result = slotNumbersforCarswithColour(argsArr[1]);
                     break;
                 case SLOT_NUMBER_FOR_REGISTRATION_NUMBER: 
-                    result = slotNumberforRegistrationNumber();
+                    result = slotNumberforRegistrationNumber(argsArr[1]);
                     break;
                 default:
                     break;
@@ -92,8 +92,19 @@ public class CoreParkingLot {
         return "Sorry, parking lot is full ";
     }
 
-    private String registrationNumbersforCarswithColour() {
-        return "";
+    private String registrationNumbersforCarswithColour(String color) {
+        ArrayList<String> regNumbers = new ArrayList<>(); 
+        for (int i = 0; i < park.getSlots().length; i++) {
+            Slot slot = park.getSlots()[i];
+            if (slot.getPlateNumber() == null) continue;
+            String colorUppcase = color.toUpperCase();
+            if (slot.getColor().toUpperCase().equals(colorUppcase)) {
+                regNumbers.add(slot.getPlateNumber());
+            }
+        }
+        if (regNumbers.size() == 0) 
+            return "Not found";
+        return String.join(", ", regNumbers);
     }
 
     private String status() {
@@ -109,12 +120,34 @@ public class CoreParkingLot {
         return result;
     }
 
-    private String slotNumbersforCarswithColour() {
-        return "";
+    private String slotNumbersforCarswithColour(String color) {
+        ArrayList<String> slotNumbers = new ArrayList<>(); 
+        for (int i = 0; i < park.getSlots().length; i++) {
+            Slot slot = park.getSlots()[i];
+            if (slot.getPlateNumber() == null) continue;
+            String colorUppcase = color.toUpperCase();
+            if (slot.getColor().toUpperCase().equals(colorUppcase)) {
+                slotNumbers.add(Integer.toString(i + 1));
+            }
+        }
+        if (slotNumbers.size() == 0) 
+            return "Not found";
+        return String.join(", ", slotNumbers);
     }
 
-    private String slotNumberforRegistrationNumber() {
-        return "";
+    private String slotNumberforRegistrationNumber(String regNumber) {
+        ArrayList<String> slotNumbers = new ArrayList<>(); 
+        for (int i = 0; i < park.getSlots().length; i++) {
+            Slot slot = park.getSlots()[i];
+            if (slot.getPlateNumber() == null) continue;
+            String regNumberUppcase = regNumber.toUpperCase();
+            if (slot.getPlateNumber().toUpperCase().equals(regNumberUppcase)) {
+                slotNumbers.add(Integer.toString(i + 1));
+            }
+        }
+        if (slotNumbers.size() == 0) 
+            return "Not found";
+        return String.join(", ", slotNumbers);
     }
 
 }
