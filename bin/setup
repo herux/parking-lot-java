@@ -7,4 +7,4 @@
 # should Just Work.
 #!/bin/bash
 cd ../src
-javac main/java/com/herux/ParkingLotApp.java
+javac -d ../bin/ main/java/com/herux/ParkingLotApp.java
