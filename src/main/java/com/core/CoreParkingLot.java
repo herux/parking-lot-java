@@ -64,7 +64,7 @@ public class CoreParkingLot {
         return result;
     }
 
-    private String createParkingLot (int count) {
+    public String createParkingLot (int count) {
         Slot[] slots = new Slot[count];
         for (int i = 0; i < slots.length; i++) {
             slots[i] = new Slot();
@@ -73,14 +73,14 @@ public class CoreParkingLot {
         return "Created a parking lot with " + park.getSlots().length + " slots";
     }
 
-    private String leave(int slotNum) {
+    public String leave(int slotNum) {
         Slot slot = park.getSlots()[slotNum - 1];
         slot.setPlateNumber(null);
         slot.setColor(null);
         return "Slot number "+slotNum+" is free";
     }
 
-    private String park(String plateNumber, String color) {
+    public String park(String plateNumber, String color) {
         for (int i = 0; i < park.getSlots().length; i++) {
             Slot slot = park.getSlots()[i]; 
             if (slot.getPlateNumber() == null) {
@@ -92,7 +92,7 @@ public class CoreParkingLot {
         return "Sorry, parking lot is full ";
     }
 
-    private String registrationNumbersforCarswithColour(String color) {
+    public String registrationNumbersforCarswithColour(String color) {
         ArrayList<String> regNumbers = new ArrayList<>(); 
         for (int i = 0; i < park.getSlots().length; i++) {
             Slot slot = park.getSlots()[i];
@@ -107,7 +107,7 @@ public class CoreParkingLot {
         return String.join(", ", regNumbers);
     }
 
-    private String status() {
+    public String status() {
         String result = "Slot No.   Registration No   Colour \n";
         for (int i = 0; i < park.getSlots().length; i++) {
             Slot slot = park.getSlots()[i]; 
@@ -120,7 +120,7 @@ public class CoreParkingLot {
         return result;
     }
 
-    private String slotNumbersforCarswithColour(String color) {
+    public String slotNumbersforCarswithColour(String color) {
         ArrayList<String> slotNumbers = new ArrayList<>(); 
         for (int i = 0; i < park.getSlots().length; i++) {
             Slot slot = park.getSlots()[i];
@@ -135,7 +135,7 @@ public class CoreParkingLot {
         return String.join(", ", slotNumbers);
     }
 
-    private String slotNumberforRegistrationNumber(String regNumber) {
+    public String slotNumberforRegistrationNumber(String regNumber) {
         ArrayList<String> slotNumbers = new ArrayList<>(); 
         for (int i = 0; i < park.getSlots().length; i++) {
             Slot slot = park.getSlots()[i];
